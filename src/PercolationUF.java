@@ -24,7 +24,7 @@ public class PercolationUF implements IPercolate{
 		if (row < 0 || row >= myGrid.length) {
 			return false;
 		}
-		if (col < 0 || col >= myGrid[0].length) {
+		if (col < 0 || col >= myGrid.length) {
 			return false;
 		}
 		return true;
@@ -63,7 +63,7 @@ public class PercolationUF implements IPercolate{
 
 	@Override
 	public boolean isOpen(int row, int col) {
-		if (! inBounds(row,col)) {
+		if (!inBounds(row,col)) {
 			throw new IndexOutOfBoundsException(
 					String.format("(%d,%d) not in bounds", row,col));
 		}
