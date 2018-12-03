@@ -10,7 +10,8 @@ public class PercolationBFS extends PercolationDFSFast{
 	protected void dfs(int row, int col) {
 		// out of bounds?
 		if (! inBounds(row,col)) {
-			throw new IndexOutOfBoundsException("this [row, col] is not in bounds");
+			throw new IndexOutOfBoundsException(
+					String.format("(%d,%d) not in bounds", row,col));
 		}
 		int size = myGrid.length;
 		int[] rowDelta = {-1,1,0,0};
