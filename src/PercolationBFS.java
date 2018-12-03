@@ -21,8 +21,8 @@ public class PercolationBFS extends PercolationDFSFast{
 		while (qp.size() != 0){
 			Integer k = qp.remove();
 			for(int i=0; i < rowDelta.length; i++){
-				row = row + rowDelta[k];
-				col = col + colDelta[k];
+				row = row + rowDelta[i];
+				col = col + colDelta[i];
 				if (inBounds(row,col) && myGrid[row][col] == OPEN){
 					qp.add(row*size + col);
 					myGrid[row][col] = FULL;
