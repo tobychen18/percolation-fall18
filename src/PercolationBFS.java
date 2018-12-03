@@ -19,13 +19,13 @@ public class PercolationBFS extends PercolationDFSFast{
 		myGrid[row][col] = FULL; 
 		qp.add(row*size + col);
 		while (qp.size() != 0){
-			Integer k = qp.remove();
+			Integer p = qp.remove();
 			for(int i=0; i < rowDelta.length; i++){
-				int rowNew = (k-col)/row + rowDelta[i];
-				int colNew = (k-(row*size)) + colDelta[i];
-				if (inBounds(rowNew,colNew) && myGrid[rowNew][colNew] == OPEN){
-					qp.add(rowNew*size + colNew);
-					myGrid[rowNew][colNew] = FULL;
+				row = p/size + rowDelta[i];
+				col = p%size + colDelta[i];
+				if (inBounds(row,col) && myGrid[row][col] == OPEN){
+					qp.add(row*size + col);
+					myGrid[row][col] = FULL;
 				}
 			}
 		}
