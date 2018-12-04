@@ -1,0 +1,53 @@
+
+Toby Chen
+Tc248
+
+Copy/paste the results for each IPercolate object (PercolationDFSFast, PercolationBFS, PercolationUF) as indicated in the analysis.txt file. Then answer these questions using data from PercolationUF with QuickUWPC.  
+
+Copy/Paste results from PercolationStats using PercolationDFSFast
+DFSFast
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.091
+200	0.591	0.010	0.082
+400	0.590	0.006	0.645
+800	0.594	0.004	4.222
+Exception in thread "main" java.lang.StackOverflowError
+
+
+Copy/Paste results from PercolationStats using PercolationBFS
+BFS
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.146
+200	0.591	0.010	0.159
+400	0.590	0.006	1.043
+800	0.594	0.004	7.180
+1600	0.592	0.002	44.466
+3200	0.593	0.001	288.579
+
+
+Copy/Paste results from PercolationStats using PercolationUF with the QuickUWPC UnionFind implementation.
+UF
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.091
+200	0.591	0.010	0.110
+400	0.590	0.006	0.575
+800	0.594	0.004	3.341
+1600	0.592	0.002	17.645
+3200	0.593	0.001	98.814
+
+
+
+1. How does doubling the grid size affect running time (keeping # trials fixed)
+
+Doubling the grid size would increase the runtime as we see time increases from .085s to .110 to .575 to 3.351 to 16.535 to 99.296s for a grid size of 100, 200, 400, 800, 1600, and 3200, respectively. This makes sense because as the grid size increases there are more things to run and check inside of the grid. In percolation states, getRandomSites means we have to set each cell which is exponentially bigger for increases grid size because the # of cells is size*size and then we shuffle all of the cells which is a lot more cells because again the number of cells is size*size.
+
+2. How does doubling the number of trials affect running time.
+
+Doubling the number of trials increases the runtime as well. This is because the loop inside of trials, for(int k=0; k < trials; k++){...} Though at small grid sizes and trial sizes, trials won't increase significantly enough to make a difference, at large trial sizes and grid sizes when each trial takes a relatively significant amount of time or the number of trials is significant, then the runtime will increase. 
+
+3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+
+Well essentially the time to run increase by around 6 times each time. In 24 hours there are 24 * 60 * 60 seconds aka 86,400 seconds. This means how many times do we multiply 98.814s by in order to get to 86,400. At grid size 6400 it takes ~592.884s, At grid size 12800 it takes ~3557.304s, at grid size 25600 it takes ~21,343.824s, next a grid size of 51200 takes ~128,062.944s. This means that the largest grid size we can run in 24hours with 20 trials will be between 25600 and 51200 veering around halfway in between it seems.  So maybe about a grid size of 35000.

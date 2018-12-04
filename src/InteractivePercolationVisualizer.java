@@ -20,7 +20,7 @@ public class InteractivePercolationVisualizer {
 		}
 
 		IPercolate perc = new PercolationDFS(N);
-		//IPercolate perc = new PercolationUF(new QuickFind(),N); 
+		//IPercolate perc = new PercolationUF(N, new QuickFind()); 
 
 		System.out.println(N);
 
